@@ -10,7 +10,7 @@ export default function Equipo() {
                     <Card>
                         <CardContent>
                             <Typography variant="h6">
-                                Nombre del Integrante
+                                Nombre del Integrante: Akan Moreno
                             </Typography>
                             <Typography>
                                 Rol: Frontend
@@ -22,7 +22,31 @@ export default function Equipo() {
                     <Card>
                         <CardContent>
                             <Typography variant="h6">
-                                Nombre del Integrante
+                                Nombre del Integrante: Juan Abraham
+                            </Typography>
+                            <Typography>
+                                Rol: Backend
+                            </Typography>
+                        </CardContent>
+                    </Card>
+                </Grid>
+                <Grid item xs={12} md={6}>
+                    <Card>
+                        <CardContent>
+                            <Typography variant="h6">
+                                Nombre del Integrante: Luis Enrique
+                            </Typography>
+                            <Typography>
+                                Rol: Backend
+                            </Typography>
+                        </CardContent>
+                    </Card>
+                </Grid>
+                <Grid item xs={12} md={6}>
+                    <Card>
+                        <CardContent>
+                            <Typography variant="h6">
+                                Nombre del Integrante: Jorge Enrique
                             </Typography>
                             <Typography>
                                 Rol: Backend
