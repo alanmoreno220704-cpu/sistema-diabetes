@@ -1,13 +1,30 @@
 // Crud.jsx
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Crud() {
-  // Datos de ejemplo (simulando una base de datos)
-  const [items, setItems] = useState([
-    { id: 1, nombre: "JavaScript", descripcion: "Lenguaje de programación interpretado" },
-    { id: 2, nombre: "React", descripcion: "Biblioteca para construir interfaces de usuario" },
-    { id: 3, nombre: "Node.js", descripcion: "Entorno para ejecutar JavaScript en el servidor" },
-  ]);
+  // Clave para localStorage
+  const STORAGE_KEY = "crud_items";
+
+  // Función para cargar datos desde localStorage o usar los datos por defecto
+  const loadInitialItems = () => {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (stored) {
+      return JSON.parse(stored);
+    }
+    // Datos de ejemplo iniciales
+    return [
+      { id: 1, nombre: "JavaScript", descripcion: "Lenguaje de programación interpretado" },
+      { id: 2, nombre: "React", descripcion: "Biblioteca para construir interfaces de usuario" },
+      { id: 3, nombre: "Node.js", descripcion: "Entorno para ejecutar JavaScript en el servidor" },
+    ];
+  };
+
+  const [items, setItems] = useState(loadInitialItems);
+
+  // Guardar en localStorage cada vez que cambien los items
+  useEffect(() => {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
+  }, [items]);
 
   // Estado del modal
   const [modal, setModal] = useState({
@@ -72,7 +89,7 @@ export default function Crud() {
 
   return (
     <div className="crud-container">
-      {/* Estilos CSS (dark mode) */}
+      {/* Estilos CSS (dark mode) - igual que antes */}
       <style>{`
         .crud-container {
           background: #0f0f1a;
@@ -266,7 +283,7 @@ export default function Crud() {
       `}</style>
 
       <div className="crud-card">
-        <h2 className="crud-title">📋 CRUD - Programación Web</h2>
+        <h2 className="crud-title">📋 CRUD - Programación Web (con persistencia)</h2>
 
         {/* Botón de Alta (Create) */}
         <button
@@ -322,7 +339,7 @@ export default function Crud() {
         </div>
       </div>
 
-      {/* MODAL para Consulta, Actualización y Alta */}
+      {/* MODAL para Consulta, Actualización y Alta (sin cambios) */}
       {modal.open && (
         <div className="modal-overlay" onClick={closeModal}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
