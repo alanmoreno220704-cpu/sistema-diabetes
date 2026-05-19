@@ -10,7 +10,7 @@ export default function Equipo() {
                     <Card>
                         <CardContent>
                             <Typography variant="h6">
-                                Nombre del Integrante: Akan Moreno
+                                Nombre del Integrante: Alan Moreno
                             </Typography>
                             <Typography>
                                 Rol: Frontend
